@@ -1,4 +1,4 @@
-package com.artemissoftware.hermeschat.data.remote
+package com.artemissoftware.hermeschat.data.remote.service
 
 import com.artemissoftware.hermeschat.data.remote.dto.MessageDto
 import com.artemissoftware.hermeschat.data.remote.mappers.toMessage
