@@ -70,4 +70,6 @@ dependencies {
     debugImplementation(libs.ui.test.manifest)
 
     implementation(libs.kotlinx.serialization.json)
+
+    implementation(libs.ktor.client.core)
 }
