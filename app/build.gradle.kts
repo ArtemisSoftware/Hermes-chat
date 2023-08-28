@@ -71,6 +71,8 @@ dependencies {
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
 
+    implementation(libs.navigation.compose)
+
     implementation(libs.kotlinx.serialization.json)
 
     implementation(libs.ktor.client.core)
