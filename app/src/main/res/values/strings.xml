@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HermesChat</string>
+    <string name="enter_username">Enter a username...</string>
+    <string name="enter_message">Enter a message</string>
 </resources>

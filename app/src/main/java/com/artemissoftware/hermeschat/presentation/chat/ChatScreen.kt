@@ -15,10 +15,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -30,7 +26,9 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
+import com.artemissoftware.hermeschat.R
 import com.artemissoftware.hermeschat.presentation.chat.composables.MessageBalloon
+import com.artemissoftware.hermeschat.presentation.composables.HCTextField
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -118,20 +116,16 @@ private fun ChatScreenContent(
         Row(
             modifier = Modifier.fillMaxWidth(),
         ) {
-            TextField(
-                value = messageText,
+            HCTextField(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(6.dp),
+                text = messageText,
                 onValueChange = onMessageChange,
-                placeholder = {
-                    Text(text = "Enter a message")
-                },
-                modifier = Modifier.weight(1f),
+                placeHolder = R.string.enter_message,
+                icon = Icons.Default.Send,
+                onClick = sendMessage,
             )
-            IconButton(onClick = sendMessage) {
-                Icon(
-                    imageVector = Icons.Default.Send,
-                    contentDescription = "Send",
-                )
-            }
         }
     }
 }
