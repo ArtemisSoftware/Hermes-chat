@@ -55,11 +55,13 @@ fun HCTextField(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f),
-            colors = TextFieldDefaults.textFieldColors(
+            colors = TextFieldDefaults.colors(
+                focusedTextColor = Color.White,
+                focusedContainerColor = Color.Transparent,
+                unfocusedContainerColor = Color.Transparent,
+                disabledContainerColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
-                textColor = Color.White,
-                containerColor = Color.Transparent,
             ),
             placeholder = {
                 Text(text = stringResource(id = placeHolder))

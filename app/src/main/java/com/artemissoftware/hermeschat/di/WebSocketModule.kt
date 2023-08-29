@@ -10,10 +10,13 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
-import io.ktor.client.features.json.JsonFeature
-import io.ktor.client.features.json.serializer.KotlinxSerializer
-import io.ktor.client.features.logging.Logging
-import io.ktor.client.features.websocket.WebSockets
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.plugins.logging.DEFAULT
+import io.ktor.client.plugins.logging.LogLevel
+import io.ktor.client.plugins.logging.Logger
+import io.ktor.client.plugins.logging.Logging
+import io.ktor.client.plugins.websocket.WebSockets
+import io.ktor.serialization.kotlinx.json.json
 import javax.inject.Singleton
 
 @Module
@@ -24,10 +27,13 @@ object WebSocketModule {
     @Singleton
     fun provideHttpClient(): HttpClient {
         return HttpClient(CIO) {
-            install(Logging)
+            install(Logging) {
+                logger = Logger.DEFAULT
+                level = LogLevel.ALL
+            }
             install(WebSockets)
-            install(JsonFeature) {
-                serializer = KotlinxSerializer()
+            install(ContentNegotiation) {
+                json()
             }
         }
     }
